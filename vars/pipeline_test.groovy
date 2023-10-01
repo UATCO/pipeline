@@ -1,4 +1,4 @@
-def build(product) {
+def build(product, tests_path) {
 
     products = [
     'big_geek_tests': 'https://github.com/UATCO/big_geek_tests',
@@ -38,7 +38,7 @@ def build(product) {
     stage('test_preparation') {
         bat '''
         chcp 65001
-        xcopy C:\\ProgramData\\Jenkins\\projects\\big_geek_tests\\test-auth\\smoke\\test_auth C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\test_job /e /y'''
+        xcopy C:\ProgramData\Jenkins\projects\product\tests_path C:\ProgramData\Jenkins\.jenkins\workspace\test_job /e /y'''
     }
 
     stage('start_tests')
