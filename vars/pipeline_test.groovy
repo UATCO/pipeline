@@ -1,4 +1,4 @@
-def build() {
+def build(repo) {
     node {
     stage('project_update')
         dir ('C:/ProgramData/Jenkins/projects') {
@@ -9,13 +9,13 @@ def build() {
           branches: [[name: product_branch]],
           extensions: [[
                 $class: 'RelativeTargetDirectory',
-                relativeTargetDir: "big_geek_tests"
+                relativeTargetDir: repo.split('/')[-1]
                 ]],
-          userRemoteConfigs: [[url: "https://github.com/UATCO/big_geek_tests"]]
+          userRemoteConfigs: [[url: repo]]
         ])
       }
 
-    stage('uatf_upadte')
+    stage('uatf_update')
         dir ('C:/ProgramData/Jenkins/environment') {
         def uatf_branch = params.UATF_BRANCH
         echo ">>>>>>> UATF_BRANCH: ${uatf_branch}"
