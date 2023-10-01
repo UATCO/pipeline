@@ -1,5 +1,3 @@
-{ -> }
-
 def build() {
     node {
     stage('project_update')
