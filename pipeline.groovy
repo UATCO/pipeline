@@ -1,9 +1,11 @@
 node {
     stage('project_update')
         dir ('C:/ProgramData/Jenkins/projects') {
+        def product_branch = params.PRODUCT_BRANCH
+        echo ">>>>>>> PRODUCT_BRANCH: ${product_branch}"
         checkout([
           $class: "GitSCM",
-          branches: [[name: "debug"]],
+          branches: [[name: product_branch]],
           extensions: [[
                 $class: 'RelativeTargetDirectory',
                 relativeTargetDir: "big_geek_tests"
@@ -14,9 +16,11 @@ node {
 
     stage('uatf_upadte')
         dir ('C:/ProgramData/Jenkins/environment') {
+        def uatf_branch = params.UATF_BRANCH
+        echo ">>>>>>> UATF_BRANCH: ${uatf_branch}"
         checkout([
           $class: "GitSCM",
-          branches: [[name: "jenkins_adoptate"]],
+          branches: [[name: uatf_branch]],
           extensions: [[
                 $class: 'RelativeTargetDirectory',
                 relativeTargetDir: "uatf"
@@ -40,7 +44,6 @@ node {
         C:\\python311\\python.exe -c "from uatf.run import RunTests;RunTests().run_tests()"
         '''
         )
-    dir('artifact') {
-        archiveArtifacts "report.html"
-    }
+    archiveArtifacts "artifacts.zip"
+    junit keepLongStdio: true, skipOldReports: true, testResults: 'test-reports/*.xml'
 }
