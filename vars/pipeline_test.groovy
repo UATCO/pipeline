@@ -38,7 +38,7 @@ def build(product, tests_path) {
     stage('test_preparation') {
         bat '''
         chcp 65001
-        xcopy C:\ProgramData\Jenkins\projects\product\tests_path C:\ProgramData\Jenkins\.jenkins\workspace\test_job /e /y'''
+        xcopy C:\\ProgramData\\Jenkins\\projects\\product\\tests_path C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\test_job /e /y'''
     }
 
     stage('start_tests')
