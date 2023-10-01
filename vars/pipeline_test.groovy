@@ -1,4 +1,9 @@
-def build(repo) {
+def build(product) {
+
+    products = [
+    'big_geek_tests': 'https://github.com/UATCO/big_geek_tests',
+    ]
+
     node {
     stage('project_update')
         dir ('C:/ProgramData/Jenkins/projects') {
@@ -9,9 +14,9 @@ def build(repo) {
           branches: [[name: product_branch]],
           extensions: [[
                 $class: 'RelativeTargetDirectory',
-                relativeTargetDir: repo.split('/')[-1]
+                relativeTargetDir: products[product].split('/')[-1]
                 ]],
-          userRemoteConfigs: [[url: repo]]
+          userRemoteConfigs: [[url: products[product]]]
         ])
       }
 
