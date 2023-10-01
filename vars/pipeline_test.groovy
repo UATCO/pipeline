@@ -44,14 +44,16 @@ def build(product, tests_path) {
     }
 
     stage('start_tests')
-        bat(
-        script: '''
+        def command_start_tests = """
         chcp 65001
+        set PYTHONPATH=C:\\ProgramData\\Jenkins\\environment\\uatf;C:\\ProgramData\\Jenkins\\projects\\${product}
+        C:\\python311\\python.exe -c 'from uatf.run import RunTests;RunTests().run_tests()'
+        """
 
-        set PYTHONPATH=C:\\ProgramData\\Jenkins\\environment\\uatf;C:\\ProgramData\\Jenkins\\projects\\big_geek_tests
-        C:\\python311\\python.exe -c "from uatf.run import RunTests;RunTests().run_tests()"
-        '''
+        bat(
+        script: command_start_tests
         )
+
     archiveArtifacts "artifacts.zip"
     junit keepLongStdio: true, skipOldReports: true, testResults: 'test-reports/*.xml'
 }}
