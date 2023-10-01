@@ -36,10 +36,10 @@ def build(product, tests_path) {
        }
 
     stage('test_preparation') {
-        def command_copy = '''
+        def command_copy = """
         chcp 65001
         xcopy C:\\ProgramData\\Jenkins\\projects\\${product}\\${tests_path} C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\test_job /e /y
-        '''
+        """
         bat command_copy
     }
 
