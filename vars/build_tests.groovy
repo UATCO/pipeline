@@ -1,7 +1,7 @@
 
 def build(product, tests_path) {
 
-    products = products.products // доступные продукты
+    products = products.products() // доступные продукты
 
     node {
     stage('project_update')
