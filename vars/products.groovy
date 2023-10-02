@@ -1,4 +1,3 @@
-{ -> }
 
 def products
     all_products = [

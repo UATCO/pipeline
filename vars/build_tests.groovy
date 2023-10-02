@@ -1,10 +1,10 @@
-{ -> }
 
 def build(product, tests_path) {
+    node {
+
     def helpers = load 'products.groovy'
     products = products.products // доступные продукты
 
-    node {
     stage('project_update')
         dir ('C:/ProgramData/Jenkins/projects') {
         def product_branch = params.PRODUCT_BRANCH
