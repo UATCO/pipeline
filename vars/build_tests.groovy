@@ -1,8 +1,6 @@
 def build(product, tests_path) {
 
-    products = [
-    'big_geek_tests': 'https://github.com/UATCO/big_geek_tests',
-    ]
+    products = products.products \\доступные продукты
 
     node {
     stage('project_update')
