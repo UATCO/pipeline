@@ -37,11 +37,15 @@ def build(product, tests_path) {
 
     stage('test_preparation') {
         def command_copy = """
-        chcp 866
         xcopy C:\\ProgramData\\Jenkins\\projects\\${product}\\${tests_path} C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\${JOB_NAME.replace('/', '\\')} /e /y
         """
+        String data = """
+        xcopy C:\\ProgramData\\Jenkins\\projects\\${product}\\${tests_path} C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\${JOB_NAME.replace('/', '\\')} /e /y
+        """
+        data = new String (arr.getBytes("utf8"), "utf8");
+
         echo command_copy
-        bat(script: command_copy)
+        //bat(script: command_copy)
     }
 
     stage('start_tests')
