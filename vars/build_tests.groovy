@@ -37,7 +37,8 @@ def build(product, tests_path) {
 
     stage('test_preparation') {
         def command_copy = """
-        chcp 866
+        @echo off
+        chcp 1251 >nul
         xcopy C:\\ProgramData\\Jenkins\\projects\\${product}\\${tests_path} C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\${JOB_NAME.replace('/', '\\')} /e /y
         """
         echo command_copy
