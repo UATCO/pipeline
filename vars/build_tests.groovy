@@ -1,7 +1,7 @@
 { -> }
 
 def build(product, tests_path) {
-    def helpers = load 'products.groovy'
+    def helpers = load 'vars\products.groovy'
     products = products.products // доступные продукты
 
     node {
