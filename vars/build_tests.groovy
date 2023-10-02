@@ -40,7 +40,7 @@ def build(product, tests_path) {
         chcp 65001
         xcopy C:\\ProgramData\\Jenkins\\projects\\${product}\\${tests_path} C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\${JOB_NAME} /e /y
         """
-
+        echo command_copy
         bat(script: command_copy)
     }
 
