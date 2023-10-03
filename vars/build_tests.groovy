@@ -1,7 +1,7 @@
 
 def build(product, tests_path) {
 
-    products = products.products // доступные продукты
+    product_git = products.get_product_project(product)
 
     node {
     stage('project_update')
@@ -13,9 +13,9 @@ def build(product, tests_path) {
           branches: [[name: product_branch]],
           extensions: [[
                 $class: 'RelativeTargetDirectory',
-                relativeTargetDir: products[product].split('/')[-1]
+                relativeTargetDir: product_git.split('/')[-1]
                 ]],
-          userRemoteConfigs: [[url: products[product]]]
+          userRemoteConfigs: [[url: product_git]]
         ])
       }
 
