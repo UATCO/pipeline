@@ -1,5 +1,3 @@
-package src
-
 
 def build(product, tests_path) {
 
