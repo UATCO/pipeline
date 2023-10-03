@@ -1,7 +1,9 @@
+package src
+
 
 def build(product, tests_path) {
 
-    product_git = get_product_project(product)
+    product_git = products.get_product_project(product)
 
     node {
     stage('project_update')
