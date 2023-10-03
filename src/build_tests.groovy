@@ -10,7 +10,11 @@ def get_product_project(product_name) {
 
 def build(product, tests_path) {
 
-    product_git = get_product_project(product)
+    all_products = [
+    'big_geek_tests': 'https://github.com/UATCO/big_geek_tests',
+    ]
+
+    product_git = all_products[product]
 
     node {
     stage('project_update')
