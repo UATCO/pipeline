@@ -57,7 +57,7 @@ def build(product, tests_path) {
         xcopy ${project_tests_path}  ${job_tests_path} /e /y
         copy ${job_tests_path}\\config\\show-config.ini ${job_tests_path}\\config.ini
         """
-        bat(script: command_copy)
+        pwsh(script: command_copy)
     }
 
     stage('start_tests')
@@ -67,7 +67,7 @@ def build(product, tests_path) {
         C:\\python311\\python.exe -c "from uatf.run import RunTests;RunTests().run_tests()"
         """
 
-        bat(
+        pwsh(
         script: command_start_tests
         )
 
