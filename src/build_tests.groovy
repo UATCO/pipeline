@@ -64,9 +64,8 @@ def build(product, tests_path) {
         def command_start_tests = """
         chcp 65001
         set PYTHONPATH=C:\\ProgramData\\Jenkins\\environment\\uatf;C:\\ProgramData\\Jenkins\\projects\\${product}
-        C:\\python311\\python.exe -c "from uatf.run import RunTests;RunTests().run_tests()" --CREATE_REPORT_UI True
+        C:\\python311\\python.exe -c "from uatf.run import RunTests;RunTests().run_tests()" --CREATE_REPORT_UI True --HEADLESS_MODE True
         """
-        echo ">>>Команда ${command_start_tests}"
 
         bat(
         script: command_start_tests
