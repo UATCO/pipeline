@@ -66,6 +66,7 @@ def build(product, tests_path) {
         set PYTHONPATH=C:\\ProgramData\\Jenkins\\environment\\uatf;C:\\ProgramData\\Jenkins\\projects\\${product}
         C:\\python311\\python.exe -c "from uatf.run import RunTests;RunTests().run_tests()"
         """
+        echo ">>>Команда ${command_start_tests}"
 
         bat(
         script: command_start_tests
