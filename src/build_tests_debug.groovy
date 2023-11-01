@@ -54,7 +54,7 @@ def build(product, tests_path) {
 
         def command_copy = """
         chcp 65001
-        xcopy ${project_tests_path}  ${job_tests_path} /e /y /s
+        xcopy ${project_tests_path}  ${job_tests_path} /e /y /f
         copy ${job_tests_path}\\config\\show-config.ini ${job_tests_path}\\config.ini
         """
         bat(script: command_copy)
