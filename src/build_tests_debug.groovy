@@ -17,6 +17,10 @@ def build(product, tests_path) {
     product_git = all_products[product]
 
     node {
+
+    def project_tests_path = "C:\\ProgramData\\Jenkins\\projects\\${product}\\${tests_path}"
+    def job_tests_path = "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\${JOB_NAME.replace('/', '\\')}\\${tests_path}"
+
     stage('project_update')
         dir ('C:/ProgramData/Jenkins/projects') {
         def product_branch = params.PRODUCT_BRANCH
@@ -48,9 +52,6 @@ def build(product, tests_path) {
        }
 
     stage('test_preparation') {
-
-        def project_tests_path = "C:\\ProgramData\\Jenkins\\projects\\${product}\\${tests_path}"
-        def job_tests_path = "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\${JOB_NAME.replace('/', '\\')}\\${tests_path}"
 
         def command_copy = """
         chcp 65001
