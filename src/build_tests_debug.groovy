@@ -61,6 +61,7 @@ def build(product, tests_path) {
     }
 
     stage('start_tests')
+        dir(job_tests_path){
         def command_start_tests = """
         chcp 65001
         set PYTHONPATH=C:\\ProgramData\\Jenkins\\environment\\uatf;C:\\ProgramData\\Jenkins\\projects\\${product}
@@ -72,5 +73,5 @@ def build(product, tests_path) {
         )
 
     archiveArtifacts "artifacts.zip"
-    junit keepLongStdio: true, skipOldReports: true, testResults: 'test-reports/*.xml'
+    junit keepLongStdio: true, skipOldReports: true, testResults: 'test-reports/*.xml'}
 }}
